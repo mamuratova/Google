@@ -1,0 +1,114 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gooogle</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+</head>
+<body>
+<div style="height: 90px;
+    width: 100%;">
+ <div style="
+    background: #fff;
+
+    border: 1px solid transparent;
+    box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
+    height: 39px;
+    width: 690px;
+    border-radius: 24px;
+    z-index: 3;
+    height: 44px;
+    flex: 2;
+    padding: 7px 5px 0 1px;
+
+margin: 40px;"><form method="post" action="search">
+    {% csrf_token %}
+
+
+        <input style="background-color: var(--search-box-bg, white);
+    border: none;
+    border-radius: calc(0.5 * var(--ntp-realbox-height));
+    color: var(--search-box-text);
+    font-family: inherit;
+    font-size: inherit;
+    height: 100%;
+    outline: none;
+    padding-inline-end: 44px;
+    padding-inline-start: 52px;
+    position: relative;
+    width: 85%;" type="text" name="search" id="input" placeholder="" autocomplete="on" onkeydown="keyCode(event)">
+        <img src="{% static 'images/gMic.png' %}" alt="mic" width="25px">
+     <a href="#" onclick="userSearch()"><button style="background-color: white;" type="submit">
+
+         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+</svg>
+
+     </button></a>
+</form>
+    <section class="top">
+
+        <div class="topText">
+            <a href="https://mail.google.com/"><h6>Gmail</h6></a>
+            <a href="https://www.google.co.in/imghp?hl=en&tab=ri&authuser=0&ogbl"><h6>Images</h6></a>
+        </div>
+        <div class="closedGrid" onclick="menu()">
+            <a href="#"><img src="{% static 'images/grid.png' %}" alt="grid" width="30px"></a>
+        </div>
+        <div class="openGrid" id="openGrid">
+            <ul>
+                <li><a href="https://www.google.co.in/maps?hl=en&tab=wl&authuser=0"><img src="./images/googleIcons/gMaps.png" alt="maps">Maps</a></li>
+                <li><a href="https://www.youtube.com/?gl=IN&tab=w1"><img src="{% static 'images/googleIcons/gYoutube.png' %}" alt="youtube">YouTube</a></li>
+                <li><a href="https://photos.google.com/"><img src="./images/googleIcons/gPhotos.png" alt="photos">Photos</a></li>
+
+                <li><a href="https://mail.google.com/"><img src="./images/googleIcons/gGmail.png" alt="gmail">Gmail</a></li>
+                <li><a href="https://meet.google.com/"><img src="./images/googleIcons/gMeet.png" alt="meet">Meet</a></li>
+                <li><a href="https://drive.google.com/"><img src="./images/googleIcons/gDrive.png" alt="drive">Drive</a></li>
+            </ul>
+        </div>
+        <div class="account">
+            <a href="https://accounts.google.com/signin/v2/identifier?hl=en&passive=true&continue=https%3A%2F%2Fwww.google.com%2F%3Fgws_rd%3Dssl&ec=GAZAAQ&flowName=GlifWebSignIn&flowEntry=ServiceLogin"><img src="{% static 'images/googleIcons/gGoogle.png' %}" alt="account" width="30px"></a>
+        </div>
+    </section>
+     </div>
+    </div>
+
+
+<div style="clear: both;
+    position: relative;
+    margin-left: 180px;
+    width: 652px;">
+    {% if final_result %}
+    <b style="padding-left: 0px; padding-right: 50px; color: #646464;">Web Results</b><br><br>
+    {% for result in final_result %}
+    <div style="width: 600px;
+    margin-top: 0;
+    margin-bottom: 30px;
+line-height: 1.58;
+    text-align: left;
+font-family: arial,sans-serif;
+    font-size: 14px;">
+        <h3 style="color: #1a0dab;"><a href="{{ result.1 }}">{{ result.0 }}</a></h3>
+        <h3 style="color: #4d5156;">{{ result.2 }}</h3>
+        <h3></h3>
+
+    </div>
+    {% endfor %}
+    {% endif %}
+</div>
+<div style="flex: 0 0 auto;">
+    <div class="languages">
+        <h5>Gooogle offered in:</h5>
+        <ul>
+            <li><a href="{% static 'images/404.jpeg' %}">ಕನ್ನಡ</a></li>
+            <li><a href="{% static 'images/404.jpeg' %}">हिन्दी</a></li>
+            <li><a href="{% static 'images/404.jpeg' %}">English</a></li>
+        </ul>
+    </div>
+</div>
+    <script src="{% static 'script.js' %}"></script>
+</body>
+</html>
